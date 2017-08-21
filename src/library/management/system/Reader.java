@@ -13,13 +13,12 @@ public class Reader implements User {
 
     private String firstName;
     private String lastName;
-    private final String email;
-    private final String password;
+    private String email;
+    private String password;
     private String mobile;
-    private String address1;
-    private String address2;
+    private String street;
     private String city;
-    private String province;
+    private String postalCode;
     private String nid;
 
     /**
@@ -33,6 +32,14 @@ public class Reader implements User {
     }
 
     // Getters
+    /**
+     *
+     * @return String
+     */
+    public String getEmail() {
+        return this.email;
+    }
+
     /**
      *
      * @return String
@@ -61,16 +68,8 @@ public class Reader implements User {
      *
      * @return String
      */
-    public String getAddress1() {
-        return this.address1;
-    }
-
-    /**
-     *
-     * @return String
-     */
-    public String getAddress2() {
-        return this.address2;
+    public String getStreet() {
+        return this.street;
     }
 
     /**
@@ -85,8 +84,8 @@ public class Reader implements User {
      *
      * @return String
      */
-    public String getProvince() {
-        return this.province;
+    public String getPostalCode() {
+        return this.postalCode;
     }
 
     /**
@@ -98,6 +97,22 @@ public class Reader implements User {
     }
 
     // Setters
+    /**
+     *
+     * @param email
+     */
+    public void setEmail(String email) {
+        this.email = email;
+    }
+
+    /**
+     *
+     * @param password
+     */
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
     /**
      *
      * @param firstName
@@ -124,18 +139,10 @@ public class Reader implements User {
 
     /**
      *
-     * @param address1
+     * @param street
      */
-    public void setAddress1(String address1) {
-        this.address1 = address1;
-    }
-
-    /**
-     *
-     * @param address2
-     */
-    public void setAddress2(String address2) {
-        this.address2 = address2;
+    public void setStreet(String street) {
+        this.street = street;
     }
 
     /**
@@ -148,10 +155,10 @@ public class Reader implements User {
 
     /**
      *
-     * @param province
+     * @param postalCode
      */
-    public void setProvince(String province) {
-        this.province = province;
+    public void setPostalCode(String postalCode) {
+        this.postalCode = postalCode;
     }
 
     /**
@@ -160,6 +167,19 @@ public class Reader implements User {
      */
     public void setNid(String nid) {
         this.nid = nid;
+    }
+
+    public String[] toStringArray() {
+        return new String[]{
+            this.firstName,
+            this.lastName,
+            this.email,
+            this.mobile,
+            this.street,
+            this.city,
+            this.postalCode,
+            this.nid
+        };
     }
 
 }
