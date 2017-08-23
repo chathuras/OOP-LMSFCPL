@@ -19,7 +19,7 @@ public class LibraryManagementSystem {
         Application application = new Application();
         application.setVisible(true);
         
-        ReaderList readerList = DataRetriever.getReaders();
+        ReaderList readerList = Database.getReaders();
         application.populateReadersTable(readerList);
     }
     

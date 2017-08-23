@@ -9,10 +9,11 @@ package library.management.system;
  *
  * @author chathura
  */
-public class DataRetriever {
-//    private static DataRetriever dataRetriever = new DataRetriever();
+public class Database {
+    private ReaderList readerList;
+//    private static Database dataRetriever = new Database();
 
-//    public DataRetriever getInstance() {
+//    public Database getInstance() {
 //        
 //    }
     public static ReaderList getReaders() {
@@ -28,7 +29,7 @@ public class DataRetriever {
             {"JoelPearson@gustr.com", "augh1iVei", "070 6273 7082", "Joel", "Pearson", "85 South Western Terrace", "MILTON CLEVEDON", "BA4 7QQ", "YE 54 23 73 B"},
             {"LewisFord@rhyta.com", "ogoh3Ui9we6", "070 1135 0324", "Lewis", "Ford", "24 Temple Way", "WINTERBOURNE ABBAS", "DT2 5BA", "NN 19 19 65 C"}};
 
-        ReaderList readerList = new ReaderList();
+//        ReaderList readerList = new ReaderList();
 
         for (String[] row : readerData) {
             Reader reader = new Reader(row[0], row[1]);
@@ -44,5 +45,9 @@ public class DataRetriever {
         }
 
         return readerList;
+    }
+
+    public static void addReader(Reader reader) {
+        
     }
 }
