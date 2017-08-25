@@ -42,6 +42,14 @@ public class Reader implements User {
      *
      * @return String
      */
+    public String getId() {
+        return this.id;
+    }
+    
+    /**
+     *
+     * @return String
+     */
     public String getEmail() {
         return this.email;
     }

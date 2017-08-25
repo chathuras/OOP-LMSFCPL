@@ -13,6 +13,10 @@ import static library.management.system.LibraryManagementSystem.application;
  */
 public class AddEditReader extends javax.swing.JFrame {
 
+    private Boolean editForm = false;
+    private Reader reader;
+    private int index;
+
     /**
      * Creates new form AddEditReader
      */
@@ -202,7 +206,7 @@ public class AddEditReader extends javax.swing.JFrame {
                                 .addComponent(jTextNid, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextCity, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)
                                 .addComponent(jTextMobile, javax.swing.GroupLayout.PREFERRED_SIZE, 120, javax.swing.GroupLayout.PREFERRED_SIZE)))))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
         jPanel1Layout.setVerticalGroup(
             jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -239,9 +243,9 @@ public class AddEditReader extends javax.swing.JFrame {
                     .addComponent(jTextConfirmPassword, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(jPanel1Layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonCancel)
-                    .addComponent(jButtonSave))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                    .addComponent(jButtonSave)
+                    .addComponent(jButtonCancel))
+                .addContainerGap(16, Short.MAX_VALUE))
         );
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
@@ -257,8 +261,8 @@ public class AddEditReader extends javax.swing.JFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jPanel1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
+                .addComponent(jPanel1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
         );
 
         pack();
@@ -285,7 +289,12 @@ public class AddEditReader extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextMobileActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        this.addReader();
+        if (this.editForm) {
+            this.updateReader();
+        } else {
+            this.addReader();
+        }
+
         this.setVisible(false);
         dispose();
     }//GEN-LAST:event_jButtonSaveActionPerformed
@@ -331,18 +340,58 @@ public class AddEditReader extends javax.swing.JFrame {
     }
 
     private void addReader() {
-        Reader reader = new Reader(jTextEmail.getText(), jTextPassword.getText());
+        this.reader = new Reader(jTextEmail.getText(), jTextPassword.getText());
 
-        reader.setFirstName(jTextFirstName.getText());
-        reader.setLastName(jTextLastName.getText());
-        reader.setMobile(jTextMobile.getText());
-        reader.setStreet(jTextStreet.getText());
-        reader.setCity(jTextCity.getText());
-        reader.setPostalCode(jTextPostalCode.getText());
-        reader.setNid(jTextNid.getText());
+        this.reader.setFirstName(jTextFirstName.getText());
+        this.reader.setLastName(jTextLastName.getText());
+        this.reader.setMobile(jTextMobile.getText());
+        this.reader.setStreet(jTextStreet.getText());
+        this.reader.setCity(jTextCity.getText());
+        this.reader.setPostalCode(jTextPostalCode.getText());
+        this.reader.setNid(jTextNid.getText());
 
         Database db = Database.getInstance();
-        db.readerList.add(reader);
+        db.readerList.add(this.reader);
+
+        application.populateReadersTable(db.readerList);
+    }
+
+    public void populateForm(Reader reader, int index) {
+        this.reader = reader;
+        this.index = index;
+        
+        jTextEmail.setText(reader.getEmail());
+        jTextFirstName.setText(reader.getFirstName());
+        jTextLastName.setText(reader.getLastName());
+        jTextMobile.setText(reader.getMobile());
+        jTextStreet.setText(reader.getStreet());
+        jTextCity.setText(reader.getCity());
+        jTextPostalCode.setText(reader.getPostalCode());
+        jTextNid.setText(reader.getNid());
+    }
+
+    public void setAddForm() {
+        this.editForm = false;
+    }
+
+    public void setEditForm() {
+        this.editForm = true;
+    }
+    
+    private void updateReader() {
+        this.reader.setEmail(jTextEmail.getText());
+        this.reader.setPassword(jTextPassword.getText());
+                
+        this.reader.setFirstName(jTextFirstName.getText());
+        this.reader.setLastName(jTextLastName.getText());
+        this.reader.setMobile(jTextMobile.getText());
+        this.reader.setStreet(jTextStreet.getText());
+        this.reader.setCity(jTextCity.getText());
+        this.reader.setPostalCode(jTextPostalCode.getText());
+        this.reader.setNid(jTextNid.getText());
+        
+        Database db = Database.getInstance();
+        db.readerList.set(this.index, reader);
         
         application.populateReadersTable(db.readerList);
     }

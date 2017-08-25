@@ -31,20 +31,18 @@ public class Application extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelReaders = new javax.swing.JPanel();
-        jButtonAddReader = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableReaders = new javax.swing.JTable();
+        jButtonAddReader = new javax.swing.JButton();
         jButtonRemoveReader = new javax.swing.JButton();
+        jButtonEditReader = new javax.swing.JButton();
         jPanelBooks = new javax.swing.JPanel();
+        jScrollPane2 = new javax.swing.JScrollPane();
+        jTableBooks = new javax.swing.JTable();
+        jButtonAddBook = new javax.swing.JButton();
+        jButtonRemoveBook = new javax.swing.JButton();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-
-        jButtonAddReader.setText("Add Reader");
-        jButtonAddReader.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonAddReaderActionPerformed(evt);
-            }
-        });
 
         jTableReaders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -59,10 +57,24 @@ public class Application extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableReaders);
 
+        jButtonAddReader.setText("Add Reader");
+        jButtonAddReader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddReaderActionPerformed(evt);
+            }
+        });
+
         jButtonRemoveReader.setText("Remove Reader");
         jButtonRemoveReader.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonRemoveReaderActionPerformed(evt);
+            }
+        });
+
+        jButtonEditReader.setText("Edit Reader");
+        jButtonEditReader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonEditReaderActionPerformed(evt);
             }
         });
 
@@ -73,12 +85,14 @@ public class Application extends javax.swing.JFrame {
             .addGroup(jPanelReadersLayout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(jPanelReadersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReadersLayout.createSequentialGroup()
-                        .addGap(0, 140, Short.MAX_VALUE)
+                        .addGap(0, 25, Short.MAX_VALUE)
                         .addComponent(jButtonRemoveReader)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                        .addComponent(jButtonAddReader, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
+                        .addComponent(jButtonEditReader)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAddReader, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
                 .addContainerGap())
         );
         jPanelReadersLayout.setVerticalGroup(
@@ -88,21 +102,64 @@ public class Application extends javax.swing.JFrame {
                 .addGap(18, 18, 18)
                 .addGroup(jPanelReadersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAddReader)
-                    .addComponent(jButtonRemoveReader))
+                    .addComponent(jButtonRemoveReader)
+                    .addComponent(jButtonEditReader))
                 .addContainerGap())
         );
 
         jTabbedPane1.addTab("Readers", jPanelReaders);
 
+        jTableBooks.setModel(new javax.swing.table.DefaultTableModel(
+            new Object [][] {
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null},
+                {null, null, null, null}
+            },
+            new String [] {
+                "Title 1", "Title 2", "Title 3", "Title 4"
+            }
+        ));
+        jScrollPane2.setViewportView(jTableBooks);
+
+        jButtonAddBook.setText("Add Reader");
+        jButtonAddBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddBookActionPerformed(evt);
+            }
+        });
+
+        jButtonRemoveBook.setText("Remove Reader");
+        jButtonRemoveBook.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveBookActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelBooksLayout = new javax.swing.GroupLayout(jPanelBooks);
         jPanelBooks.setLayout(jPanelBooksLayout);
         jPanelBooksLayout.setHorizontalGroup(
             jPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 416, Short.MAX_VALUE)
+            .addGroup(jPanelBooksLayout.createSequentialGroup()
+                .addContainerGap()
+                .addGroup(jPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 409, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelBooksLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonRemoveBook)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                        .addComponent(jButtonAddBook, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                .addContainerGap())
         );
         jPanelBooksLayout.setVerticalGroup(
             jPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 334, Short.MAX_VALUE)
+            .addGroup(jPanelBooksLayout.createSequentialGroup()
+                .addComponent(jScrollPane2, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addGroup(jPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddBook)
+                    .addComponent(jButtonRemoveBook))
+                .addContainerGap())
         );
 
         jTabbedPane1.addTab("Books", jPanelBooks);
@@ -128,6 +185,7 @@ public class Application extends javax.swing.JFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jButtonAddReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddReaderActionPerformed
+        LibraryManagementSystem.addReader.setAddForm();
         LibraryManagementSystem.addReader.setVisible(true);
     }//GEN-LAST:event_jButtonAddReaderActionPerformed
 
@@ -140,6 +198,25 @@ public class Application extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTableReaders.getModel();
         model.removeRow(rowIndex);
     }//GEN-LAST:event_jButtonRemoveReaderActionPerformed
+
+    private void jButtonAddBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddBookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonAddBookActionPerformed
+
+    private void jButtonRemoveBookActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveBookActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jButtonRemoveBookActionPerformed
+
+    private void jButtonEditReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonEditReaderActionPerformed
+        int rowIndex = jTableReaders.getSelectedRow();
+        
+        Database db = Database.getInstance();
+        Reader reader = db.readerList.get(rowIndex);
+        
+        LibraryManagementSystem.addReader.setEditForm();
+        LibraryManagementSystem.addReader.populateForm(reader, rowIndex);
+        LibraryManagementSystem.addReader.setVisible(true);
+    }//GEN-LAST:event_jButtonEditReaderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -198,12 +275,17 @@ public class Application extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAddBook;
     private javax.swing.JButton jButtonAddReader;
+    private javax.swing.JButton jButtonEditReader;
+    private javax.swing.JButton jButtonRemoveBook;
     private javax.swing.JButton jButtonRemoveReader;
     private javax.swing.JPanel jPanelBooks;
     private javax.swing.JPanel jPanelReaders;
     private javax.swing.JScrollPane jScrollPane1;
+    private javax.swing.JScrollPane jScrollPane2;
     private javax.swing.JTabbedPane jTabbedPane1;
+    private javax.swing.JTable jTableBooks;
     private javax.swing.JTable jTableReaders;
     // End of variables declaration//GEN-END:variables
 
