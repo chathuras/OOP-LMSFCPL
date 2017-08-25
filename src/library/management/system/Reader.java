@@ -177,6 +177,7 @@ public class Reader implements User {
 
     public String[] toStringArray() {
         return new String[]{
+            this.id,
             this.firstName,
             this.lastName,
             this.email,

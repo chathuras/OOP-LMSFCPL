@@ -34,6 +34,7 @@ public class Application extends javax.swing.JFrame {
         jButtonAddReader = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableReaders = new javax.swing.JTable();
+        jButtonRemoveReader = new javax.swing.JButton();
         jPanelBooks = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -58,6 +59,13 @@ public class Application extends javax.swing.JFrame {
         ));
         jScrollPane1.setViewportView(jTableReaders);
 
+        jButtonRemoveReader.setText("Remove Reader");
+        jButtonRemoveReader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonRemoveReaderActionPerformed(evt);
+            }
+        });
+
         javax.swing.GroupLayout jPanelReadersLayout = new javax.swing.GroupLayout(jPanelReaders);
         jPanelReaders.setLayout(jPanelReadersLayout);
         jPanelReadersLayout.setHorizontalGroup(
@@ -66,9 +74,11 @@ public class Application extends javax.swing.JFrame {
                 .addContainerGap()
                 .addGroup(jPanelReadersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReadersLayout.createSequentialGroup()
-                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addGap(0, 140, Short.MAX_VALUE)
+                        .addComponent(jButtonRemoveReader)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                         .addComponent(jButtonAddReader, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
-                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 0, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelReadersLayout.setVerticalGroup(
@@ -76,7 +86,9 @@ public class Application extends javax.swing.JFrame {
             .addGroup(jPanelReadersLayout.createSequentialGroup()
                 .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
                 .addGap(18, 18, 18)
-                .addComponent(jButtonAddReader)
+                .addGroup(jPanelReadersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(jButtonAddReader)
+                    .addComponent(jButtonRemoveReader))
                 .addContainerGap())
         );
 
@@ -119,6 +131,16 @@ public class Application extends javax.swing.JFrame {
         LibraryManagementSystem.addReader.setVisible(true);
     }//GEN-LAST:event_jButtonAddReaderActionPerformed
 
+    private void jButtonRemoveReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonRemoveReaderActionPerformed
+        int rowIndex = jTableReaders.getSelectedRow();
+        
+        Database db = Database.getInstance();
+        db.readerList.remove(rowIndex);
+        
+        DefaultTableModel model = (DefaultTableModel) jTableReaders.getModel();
+        model.removeRow(rowIndex);
+    }//GEN-LAST:event_jButtonRemoveReaderActionPerformed
+
     /**
      * @param args the command line arguments
      */
@@ -159,6 +181,7 @@ public class Application extends javax.swing.JFrame {
         DefaultTableModel model = (DefaultTableModel) jTableReaders.getModel();
         model.setRowCount(0);
         model.setColumnCount(0);
+        model.addColumn("ID");
         model.addColumn("First Name");
         model.addColumn("Last Name");
         model.addColumn("Email");
@@ -168,7 +191,7 @@ public class Application extends javax.swing.JFrame {
         model.addColumn("Postal Code");
         model.addColumn("National ID");
 
-        for (Reader reader: readerList) {
+        for (Reader reader : readerList) {
             model.addRow(reader.toStringArray());
         }
 
@@ -176,6 +199,7 @@ public class Application extends javax.swing.JFrame {
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonAddReader;
+    private javax.swing.JButton jButtonRemoveReader;
     private javax.swing.JPanel jPanelBooks;
     private javax.swing.JPanel jPanelReaders;
     private javax.swing.JScrollPane jScrollPane1;
