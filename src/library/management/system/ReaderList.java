@@ -12,5 +12,11 @@ import java.util.ArrayList;
  * @author chathura
  */
 public class ReaderList extends ArrayList<Reader> {
+    public void addReader(Reader reader) {
+        this.add(reader);
+    }
     
+//    public ReaderList getReaders() {
+//        return this;
+//    }
 }

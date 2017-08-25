@@ -31,11 +31,19 @@ public class Application extends javax.swing.JFrame {
 
         jTabbedPane1 = new javax.swing.JTabbedPane();
         jPanelReaders = new javax.swing.JPanel();
+        jButtonAddReader = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
         jTableReaders = new javax.swing.JTable();
         jPanelBooks = new javax.swing.JPanel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+
+        jButtonAddReader.setText("Add Reader");
+        jButtonAddReader.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonAddReaderActionPerformed(evt);
+            }
+        });
 
         jTableReaders.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -56,14 +64,19 @@ public class Application extends javax.swing.JFrame {
             jPanelReadersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelReadersLayout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 387, Short.MAX_VALUE)
+                .addGroup(jPanelReadersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, jPanelReadersLayout.createSequentialGroup()
+                        .addGap(0, 0, Short.MAX_VALUE)
+                        .addComponent(jButtonAddReader, javax.swing.GroupLayout.PREFERRED_SIZE, 119, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 404, Short.MAX_VALUE))
                 .addContainerGap())
         );
         jPanelReadersLayout.setVerticalGroup(
             jPanelReadersLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(jPanelReadersLayout.createSequentialGroup()
-                .addContainerGap()
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 285, Short.MAX_VALUE)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 281, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
+                .addComponent(jButtonAddReader)
                 .addContainerGap())
         );
 
@@ -73,11 +86,11 @@ public class Application extends javax.swing.JFrame {
         jPanelBooks.setLayout(jPanelBooksLayout);
         jPanelBooksLayout.setHorizontalGroup(
             jPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 399, Short.MAX_VALUE)
+            .addGap(0, 416, Short.MAX_VALUE)
         );
         jPanelBooksLayout.setVerticalGroup(
             jPanelBooksLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 297, Short.MAX_VALUE)
+            .addGap(0, 334, Short.MAX_VALUE)
         );
 
         jTabbedPane1.addTab("Books", jPanelBooks);
@@ -101,6 +114,10 @@ public class Application extends javax.swing.JFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
+
+    private void jButtonAddReaderActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAddReaderActionPerformed
+        LibraryManagementSystem.addReader.setVisible(true);
+    }//GEN-LAST:event_jButtonAddReaderActionPerformed
 
     /**
      * @param args the command line arguments
@@ -159,6 +176,7 @@ public class Application extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAddReader;
     private javax.swing.JPanel jPanelBooks;
     private javax.swing.JPanel jPanelReaders;
     private javax.swing.JScrollPane jScrollPane1;

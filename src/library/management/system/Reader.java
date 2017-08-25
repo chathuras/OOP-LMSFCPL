@@ -5,12 +5,15 @@
  */
 package library.management.system;
 
+import java.util.UUID;
+
 /**
  *
  * @author chathura
  */
 public class Reader implements User {
 
+    private String id;
     private String firstName;
     private String lastName;
     private String email;
@@ -27,6 +30,9 @@ public class Reader implements User {
      * @param password
      */
     public Reader(String email, String password) {
+        UUID uuid = UUID.randomUUID();
+                
+        this.id = uuid.toString();
         this.email = email;
         this.password = password;
     }

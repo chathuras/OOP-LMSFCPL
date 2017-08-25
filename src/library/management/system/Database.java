@@ -9,14 +9,21 @@ package library.management.system;
  *
  * @author chathura
  */
-public class Database {
-    private ReaderList readerList;
-//    private static Database dataRetriever = new Database();
+public final class Database {
 
-//    public Database getInstance() {
-//        
-//    }
-    public static ReaderList getReaders() {
+    private static final Database instance = new Database();
+
+    public ReaderList readerList = new ReaderList();
+
+    private Database() {
+        this.pupulateReaders();
+    }
+
+    public static Database connect() {
+        return instance;
+    }
+
+    private void pupulateReaders() {
         String readerData[][] = {
             {"TillyPotts@gustr.com", "Ohniequ1", "079 4846 8177", "Tilly", "Potts", "31 Hudson St", "DULL", "PH15 9FR", "MB 83 29 15 D"},
             {"PatrickWilliamson@gustr.com", "ceepiun0zaY", "079 3995 1729", "Patrick", "Williamson", "9 Oxford Rd", "WORTHINGTON", "LE65 2EN", "OS 43 47 65"},
@@ -29,8 +36,6 @@ public class Database {
             {"JoelPearson@gustr.com", "augh1iVei", "070 6273 7082", "Joel", "Pearson", "85 South Western Terrace", "MILTON CLEVEDON", "BA4 7QQ", "YE 54 23 73 B"},
             {"LewisFord@rhyta.com", "ogoh3Ui9we6", "070 1135 0324", "Lewis", "Ford", "24 Temple Way", "WINTERBOURNE ABBAS", "DT2 5BA", "NN 19 19 65 C"}};
 
-//        ReaderList readerList = new ReaderList();
-
         for (String[] row : readerData) {
             Reader reader = new Reader(row[0], row[1]);
             reader.setMobile(row[2]);
@@ -40,14 +45,8 @@ public class Database {
             reader.setCity(row[6]);
             reader.setPostalCode(row[7]);
             reader.setNid(row[8]);
-            
+
             readerList.add(reader);
         }
-
-        return readerList;
-    }
-
-    public static void addReader(Reader reader) {
-        
     }
 }

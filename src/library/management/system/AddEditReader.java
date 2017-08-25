@@ -75,7 +75,7 @@ public class AddEditReader extends javax.swing.JFrame {
             .addGap(0, 300, Short.MAX_VALUE)
         );
 
-        setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
+        setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
         setResizable(false);
 
         jPanel1.setBorder(javax.swing.BorderFactory.createTitledBorder("Add / Edit Reader"));
@@ -328,7 +328,7 @@ public class AddEditReader extends javax.swing.JFrame {
     
     private void addReader() {
         Reader reader = new Reader(jTextEmail.getText(), jTextPassword.getText());
-        Database.addReader(reader);
+//        Database.addReader(reader);
     }
             
 
