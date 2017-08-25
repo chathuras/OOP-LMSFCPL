@@ -5,6 +5,8 @@
  */
 package library.management.system;
 
+import static library.management.system.LibraryManagementSystem.application;
+
 /**
  *
  * @author chathura
@@ -283,7 +285,9 @@ public class AddEditReader extends javax.swing.JFrame {
     }//GEN-LAST:event_jTextMobileActionPerformed
 
     private void jButtonSaveActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSaveActionPerformed
-        
+        this.addReader();
+        this.setVisible(false);
+        dispose();
     }//GEN-LAST:event_jButtonSaveActionPerformed
 
     private void jButtonCancelActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonCancelActionPerformed
@@ -325,12 +329,24 @@ public class AddEditReader extends javax.swing.JFrame {
             }
         });
     }
-    
+
     private void addReader() {
         Reader reader = new Reader(jTextEmail.getText(), jTextPassword.getText());
-//        Database.addReader(reader);
+
+        reader.setFirstName(jTextFirstName.getText());
+        reader.setLastName(jTextLastName.getText());
+        reader.setMobile(jTextMobile.getText());
+        reader.setStreet(jTextStreet.getText());
+        reader.setCity(jTextCity.getText());
+        reader.setPostalCode(jTextPostalCode.getText());
+        reader.setNid(jTextNid.getText());
+
+        Database db = Database.getInstance();
+        db.readerList.add(reader);
+        
+        application.populateReadersTable(db.readerList);
     }
-            
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonCancel;

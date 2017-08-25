@@ -13,7 +13,7 @@ import java.util.UUID;
  */
 public class Reader implements User {
 
-    private String id;
+    private final String id;
     private String firstName;
     private String lastName;
     private String email;

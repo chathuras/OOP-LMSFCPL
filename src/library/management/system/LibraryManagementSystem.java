@@ -18,11 +18,10 @@ public class LibraryManagementSystem {
      * @param args the command line arguments
      */
     public static void main(String[] args) {
-        // TODO code application logic here
-        application.setVisible(true);
-       
-        Database db = Database.connect();
+        Database db = Database.getInstance();
         application.populateReadersTable(db.readerList);
+        
+        application.setVisible(true);
     }
     
 //    public static AddEditReader getAddReaderWindow() {

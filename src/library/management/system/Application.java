@@ -168,8 +168,7 @@ public class Application extends javax.swing.JFrame {
         model.addColumn("Postal Code");
         model.addColumn("National ID");
 
-        while (!readerList.isEmpty()) {
-            Reader reader = readerList.remove(0);
+        for (Reader reader: readerList) {
             model.addRow(reader.toStringArray());
         }
 

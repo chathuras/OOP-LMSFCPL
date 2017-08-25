@@ -19,7 +19,7 @@ public final class Database {
         this.pupulateReaders();
     }
 
-    public static Database connect() {
+    public static Database getInstance() {
         return instance;
     }
 
